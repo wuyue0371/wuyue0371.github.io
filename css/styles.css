@@ -10839,13 +10839,13 @@ textarea.form-control-lg {
   font-size: 1.2rem;
 }
 
-#sidebarToggle {
-    background: none;
-    border: none;
-    color: #555555; /* 深灰色 */
-    font-size: 20px;
-    cursor: pointer; /* 鼠标指针样式 */
+
+.btn-primary#sidebarToggle {
+    background: none !important;
+    border: none !important;
+    color: #555555 !important; /* 深灰色 */
 }
+
 
 #sidebar-wrapper .list-group {
   width: 15rem;
