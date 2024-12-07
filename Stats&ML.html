@@ -10,6 +10,7 @@
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
+        <style>a{text-decoration: none;}</style>
     </head>
     <body>
         <div class="d-flex" id="wrapper">
@@ -61,11 +62,6 @@
                             在大作业结束后，我也去学习了sklearn这部分的<a href="https://github.com/scikit-learn/scikit-learn/blob/f77ff4e7d943c1d99d0dadd18c5fa6412de99ee6/sklearn/tree/_criterion.pyx#L387">源代码（scikit-learn/sklearn/tree/_criterion.pyx）</a>，也验证了之前的想法。
                         </p>
                     </details>
-                    
-                    <details>
-                        <summary><a href="./htmls/关于回归分析的拓展？.html">学完回归分析后的问题</a></summary>
-                        <p></p>
-                    </details>
 
                     <details>
                         <summary><a href="./Causal/index_causal.html">Causal Inference</a></summary>
@@ -75,6 +71,14 @@
                     <details>
                         <summary>Notes for ML&DL</summary>
                         <p></p>
+                    </details>
+                             
+                    <details>
+                        <summary><a href="./htmls/关于回归分析的拓展？.html">学完回归分析后的问题</a></summary>
+                        <p>很早之前学回归分析的时候写的一些东西，主要做了一些simulation，一个是固定X多次抽取Y看系数估计的分布（what linear regression talks about），一个是多次从多元分布中生成X看X的表现（从X不是固定的角度来想问题），还有多次从总体中抽取X与Y，观察系数估计值的分布情况（X,Y是成对i.i.d的角度）。
+                            当时写这些主要是因为：
+                            对'如何从统计的角度理解OLS'有疑惑，对于'X作为设计矩阵'，'given X得到的结论'的有效性有着疑惑。比如，如何从(X,Y)是i.i.d的角度来理解回归？（后面我会写一个note来说明）
+                        </p>
                     </details>
 
                 </div>
