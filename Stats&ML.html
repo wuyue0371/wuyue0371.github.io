@@ -52,10 +52,31 @@
                 <div class="container-fluid">
                     <h2 class="mt-4">Stats&ML</h2>
                     <p>In this page you can find some notes about Statistics, Machine Learning and Deep Learning(or things related to coding).</p>
-                    <p><a href="./htmls/how_class_weight_work_in_tree_models.html">how the parameter class_weight work in tree models</a></p>
-                    <p><a href="./htmls/关于回归分析的拓展？.html">学完回归分析后的问题</a></p>
-                    <p><a href="./Causal/index_causal.html">Causal Inference</a></p>
-                    <!--<p><a href="xxx">Notes for ML&DL</a></p>-->
+                    <details>
+                        <summary><a href="./htmls/how_class_weight_work_in_tree_models.html">how the parameter class_weight work in tree models</a></summary>
+                        <p>大二学机器学习的时候，小组大作业做的是关于样本类别分布不均的分类问题探索，对不同类样本加权是在这类情况下一种比较常见的方法。
+                            sklearn中的class_weight参数可以在树模型or线性模型(逻辑回归等)中使用：
+                            在线性模型里其作用即修改损失函数，对不同类的样本带来的损失赋权重；
+                            而对于这个参数如何在树模型中起作用，并没有找到官方的具体说明，所以我在这个note里面用一些简单的simulation来探索验证对于其加权方式的猜想，
+                            在大作业结束后，我也去学习了sklearn这部分的<a href="https://github.com/scikit-learn/scikit-learn/blob/f77ff4e7d943c1d99d0dadd18c5fa6412de99ee6/sklearn/tree/_criterion.pyx#L387">源代码（scikit-learn/sklearn/tree/_criterion.pyx）</a>，也验证了之前的想法。
+                        </p>
+                    </details>
+                    
+                    <details>
+                        <summary><a href="./htmls/关于回归分析的拓展？.html">学完回归分析后的问题</a></summary>
+                        <p></p>
+                    </details>
+
+                    <details>
+                        <summary><a href="./Causal/index_causal.html">Causal Inference</a></summary>
+                        <p>研一上学期选修了因果推断这门课，这里面有一些关于这个领域的内容。</p>
+                    </details>
+
+                    <details>
+                        <summary>Notes for ML&DL</summary>
+                        <p></p>
+                    </details>
+
                 </div>
             </div>
         </div>
