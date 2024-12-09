@@ -56,10 +56,9 @@
                     <details>
                         <summary><a href="./htmls/how_class_weight_work_in_tree_models.html">how the parameter class_weight work in tree models</a></summary>
                         <p>大二学机器学习的时候，小组大作业做的是关于样本类别分布不均的分类问题探索，对不同类样本加权是在这类情况下一种比较常见的方法。
-                            sklearn中的class_weight参数可以在树模型or线性模型(逻辑回归等)中使用：
+                            <br>sklearn中的class_weight参数可以在树模型or线性模型(逻辑回归等)中使用：
                             在线性模型里其作用即修改损失函数，对不同类的样本带来的损失赋权重；
-                            而对于这个参数如何在树模型中起作用，并没有找到官方的具体说明，所以我在这个note里面用一些简单的simulation来探索验证对于其加权方式的猜想，
-                            在大作业结束后，我也去学习了sklearn这部分的<a href="https://github.com/scikit-learn/scikit-learn/blob/f77ff4e7d943c1d99d0dadd18c5fa6412de99ee6/sklearn/tree/_criterion.pyx#L387">源代码（scikit-learn/sklearn/tree/_criterion.pyx）</a>，也验证了之前的想法。
+                            <br>而对于这个参数如何在树模型中起作用，并没有找到官方的具体说明，所以我在这个note里面用一些简单的simulation来探索验证对于其加权方式的猜想，最后结合sklearn这部分的源代码，进一步确定了其加权原理。
                         </p>
                     </details>
 
@@ -70,15 +69,30 @@
 
                     <details>
                         <summary>Notes for ML&DL</summary>
-                        <p></p>
+                        <ul>
+                            <li>在对数据纳入模型前做预处理（如标准化、PCA等）时，需要注意的是，我们要对测试集做和训练集<b>相同的操作</b>，即比如我们对于训练集做了标准化（减均值除标准差），那么对于测试集来说，我们要做的是，减<训练集的>均值除<训练集的>标准差，PCA也一样，我们要在测试集上操作和在训练集上相同的坐标系转换。
+                                <br>这里我们其实隐形做了一些假设，即我们假定未经处理的训练集和测试集是来自同一分布，而我们得到的模型是在‘预处理后的训练集’这个分布上可行的模型，所以我们要先把测试集也变化到同一分布，即对测试集施加同样的预处理步骤。
+                            </li>
+                            <li>对于非深度的机器学习模型来说，高维输入特征时，PCA降维对于训练速度有显著提升（因为输入特征可以看做是减少了），有时对效果也有改善（因为原始数据有冗余信息）。</li>
+                            <li>在深度学习里面，有些情况下，Dropout层和BatchNormalization层对于防止过拟合、提升训练效果有奇效。</li>
+                        </ul>
                     </details>
                              
                     <details>
                         <summary><a href="./htmls/关于回归分析的拓展？.html">学完回归分析后的问题</a></summary>
                         <p>很早之前学回归分析的时候写的一些东西，主要做了一些simulation，一个是固定X多次抽取Y看系数估计的分布（what linear regression talks about），一个是多次从多元分布中生成X看X的表现（从X不是固定的角度来想问题），还有多次从总体中抽取X与Y，观察系数估计值的分布情况（X,Y是成对i.i.d的角度）。
-                            当时写这些主要是因为：
+                            <br>当时写这些主要是因为：
                             对'如何从统计的角度理解OLS'有疑惑，对于'X作为设计矩阵'，'given X得到的结论'的有效性有着疑惑。比如，如何从(X,Y)是i.i.d的角度来理解回归？（后面我会写一个note来说明）
                         </p>
+                    </details>
+
+                    <details>
+                        <summary>一些文献研读</summary>
+                        <ul>
+                            <li><a href="./Stats&ML/Self Page Pytorch&Tensorflow.html">Pytorch&Tensorflow</a></li>
+                            <li><a href="./Stats&ML/Self page Wide&Deep.html">Wide&Deep</a></li>
+                            <li><a href="./Stats&ML/Self Page Deep Interest Network DIN.html">Deep Interest Network</a></li>
+                        </ul>
                     </details>
 
                 </div>
