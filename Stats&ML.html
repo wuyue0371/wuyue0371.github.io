@@ -53,23 +53,16 @@
                 <div class="container-fluid">
                     <h2 class="mt-4">Stats&ML</h2>
                     <p>In this page you can find some notes about Statistics, Machine Learning and Deep Learning(or things related to coding).</p>
-                    <details>
-                        <summary><a href="./htmls/how_class_weight_work_in_tree_models.html">how the parameter class_weight work in tree models</a></summary>
-                        <p>大二学机器学习的时候，小组大作业做的是关于样本类别分布不均的分类问题探索，对不同类样本加权是在这类情况下一种比较常见的方法。
-                            <br>sklearn中的class_weight参数可以在树模型or线性模型(逻辑回归等)中使用：
-                            在线性模型里其作用即修改损失函数，对不同类的样本带来的损失赋权重；
-                            <br>而对于这个参数如何在树模型中起作用，并没有找到官方的具体说明，所以我在这个note里面用一些简单的simulation来探索验证对于其加权方式的猜想，最后结合sklearn这部分的源代码，进一步确定了其加权原理。
-                        </p>
-                    </details>
-
-                    <details>
-                        <summary><a href="./Causal/index_causal.html">Causal Inference</a></summary>
-                        <p>研一上学期选修了因果推断这门课，这里面有一些关于这个领域的内容。</p>
-                    </details>
 
                     <details>
                         <summary>Notes for ML&DL</summary>
                         <ul>
+                            <li><a href="./htmls/how_class_weight_work_in_tree_models.html">how the parameter class_weight work in tree models</a></summary>
+                                <br>大二学机器学习的时候，小组大作业做的是关于样本类别分布不均的分类问题探索，对不同类样本加权是在这类情况下一种比较常见的方法。
+                                <br>sklearn中的class_weight参数可以在树模型or线性模型(逻辑回归等)中使用：
+                                在线性模型里其作用即修改损失函数，对不同类的样本带来的损失赋权重；
+                                <br>而对于这个参数如何在树模型中起作用，并没有找到官方的具体说明，所以我在这个note里面用一些简单的simulation来探索验证对于其加权方式的猜想，最后结合sklearn这部分的源代码，进一步确定了其加权原理。    
+                            </li>
                             <li>在对数据纳入模型前做预处理（如标准化、PCA等）时，需要注意的是，我们要对测试集做和训练集<b>相同的操作</b>，即比如我们对于训练集做了标准化（减均值除标准差），那么对于测试集来说，我们要做的是，减<训练集的>均值除<训练集的>标准差，PCA也一样，我们要在测试集上操作和在训练集上相同的坐标系转换。
                                 <br>这里我们其实隐形做了一些假设，即我们假定未经处理的训练集和测试集是来自同一分布，而我们得到的模型是在‘预处理后的训练集’这个分布上可行的模型，所以我们要先把测试集也变化到同一分布，即对测试集施加同样的预处理步骤。
                             </li>
@@ -77,22 +70,39 @@
                             <li>在深度学习里面，有些情况下，Dropout层和BatchNormalization层对于防止过拟合、提升训练效果有奇效。</li>
                         </ul>
                     </details>
-                             
+
                     <details>
-                        <summary><a href="./htmls/关于回归分析的拓展？.html">学完回归分析后的问题</a></summary>
-                        <p>很早之前学回归分析的时候写的一些东西，主要做了一些simulation，一个是固定X多次抽取Y看系数估计的分布（what linear regression talks about），一个是多次从多元分布中生成X看X的表现（从X不是固定的角度来想问题），还有多次从总体中抽取X与Y，观察系数估计值的分布情况（X,Y是成对i.i.d的角度）。
-                            <br>当时写这些主要是因为：
-                            对'如何从统计的角度理解OLS'有疑惑，对于'X作为设计矩阵'，'given X得到的结论'的有效性有着疑惑。比如，如何从(X,Y)是i.i.d的角度来理解回归？（后面我会写一个note来说明）
-                        </p>
+                        <summary>How to understand Regression</summary>
+                        <ul>
+                            <li>
+                                <a href="./htmls/关于回归分析的拓展？.html">学完回归分析后的问题</a>
+                                <p>很早之前学回归分析的时候写的一些东西，主要做了一些simulation，一个是固定X多次抽取Y看系数估计的分布（对应回归分析课程中学到的东西），一个是多次从多元分布中生成X看X的表现（从X不是固定的角度来想问题），还有多次从总体中抽取X与Y，观察系数估计值的分布情况（X,Y是成对i.i.d的角度）。
+                                <br>当时写这些主要是因为：对'如何从统计的角度理解OLS'有疑惑，对于'X作为设计矩阵'，'given X得到的结论'的有效性有着疑惑。比如，如何从(X,Y)是i.i.d的角度来理解回归？
+                                </p>
+                            </li>
+                            <li>
+                                <p>关于上述问题，正在写一个新的note</p>
+                            </li>
+                        </ul>
                     </details>
 
                     <details>
-                        <summary>一些文献研读</summary>
+                        <summary>Some notes of papers</summary>
                         <ul>
                             <li><a href="./Stats&ML/Self Page Pytorch&Tensorflow.html">Pytorch&Tensorflow</a></li>
                             <li><a href="./Stats&ML/Self page Wide&Deep.html">Wide&Deep</a></li>
                             <li><a href="./Stats&ML/Self Page Deep Interest Network DIN.html">Deep Interest Network</a></li>
                         </ul>
+                    </details>
+
+                    <details>
+                        <summary>Functional Data Analysis</summary>
+                        <p>本科时期很荣幸跟着统计与大数据研究院的代文林老师做了有关函数型数据对齐问题的课题，也在这个过程中学习了FDA的基本知识，推荐课程：<a href="https://www.youtube.com/c/FunDataScience">FunDataScience</a>（之后可以把学习笔记放上来）</p>
+                    </details>
+
+                    <details>
+                        <summary>Causal Inference</summary>
+                        <p>研一上学期选修了因果推断这门课，<a href="./Causal/index_causal.html">这里面</a>有一些关于这个领域的内容。（建设中）</p>
                     </details>
 
                 </div>
