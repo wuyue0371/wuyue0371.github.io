@@ -57,7 +57,7 @@
                     <details>
                         <summary>Notes for ML&DL</summary>
                         <ul>
-                            <li><a href="./htmls/how_class_weight_work_in_tree_models.html">how the parameter class_weight work in tree models</a></summary>
+                            <li><a href="./Stats&ML//how_class_weight_work_in_tree_models.html">how the parameter class_weight work in tree models</a></summary>
                                 <br>大二学机器学习的时候，小组大作业做的是关于样本类别分布不均的分类问题探索，对不同类样本加权是在这类情况下一种比较常见的方法。
                                 <br>sklearn中的class_weight参数可以在树模型or线性模型(逻辑回归等)中使用：
                                 在线性模型里其作用即修改损失函数，对不同类的样本带来的损失赋权重；
@@ -70,6 +70,7 @@
                             <li>对于非深度的机器学习模型来说，高维输入特征时，PCA降维对于训练速度有显著提升（因为输入特征可以看做是减少了），有时对效果也有改善（因为原始数据有冗余信息）。
                                 <br>（后面会放一个关于PCA的note，最近看论文发现方差矩阵的operator norm可以一定程度上反应X的相关性，结论还蛮有意思的，和PCA也有一定关联）
                             </li>
+                            <li>关于最大似然和最小损失的关系的<a href="./Stats&ML/about_max_likelihood.html"></a>note</li>
                             <li>在深度学习里面，有些情况下，Dropout层和BatchNormalization层对于防止过拟合、提升训练效果有奇效。</li>
                         </ul>
                     </details>
@@ -78,13 +79,13 @@
                         <summary>How to understand Regression</summary>
                         <ul>
                             <li>
-                                <a href="./htmls/关于回归分析的拓展？.html">学完回归分析后的问题</a>
+                                <a href="./Stats&ML/关于回归分析的拓展？.html">学完回归分析后的问题</a>
                                 <p>很早之前学回归分析的时候写的一些东西，主要做了一些simulation，一个是固定X多次抽取Y看系数估计的分布（对应回归分析课程中学到的东西），一个是多次从多元分布中生成X看X的表现（从X不是固定的角度来想问题），还有多次从总体中抽取X与Y，观察系数估计值的分布情况（X,Y是成对i.i.d的角度）。
                                 <br>当时写这些主要是因为：对'如何从统计的角度理解OLS'有疑惑，对于'X作为设计矩阵'，'given X得到的结论'的有效性有着疑惑。比如，如何从(X,Y)是i.i.d的角度来理解回归？
                                 </p>
                             </li>
                             <li>
-                                <p>关于上述问题，正在写一个新的note</p>
+                                <p>关于上述问题，正在写一个新的note<a href="./Stats&ML/如何理解回归.html">（preview）</a></p>
                             </li>
                         </ul>
                     </details>
