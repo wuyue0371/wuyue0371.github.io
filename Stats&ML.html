@@ -57,20 +57,36 @@
                     <details>
                         <summary>Notes for ML&DL</summary>
                         <ul>
+                            <br>
                             <li><a href="./Stats&ML//how_class_weight_work_in_tree_models.html">how the parameter class_weight work in tree models</a></summary>
                                 <br>大二学机器学习的时候，小组大作业做的是关于样本类别分布不均的分类问题探索，对不同类样本加权是在这类情况下一种比较常见的方法。
-                                <br>sklearn中的class_weight参数可以在树模型or线性模型(逻辑回归等)中使用：
+                                <br>sklearn中的class_weight参数可以在树模型or线性模型（如逻辑回归等）中使用：
                                 在线性模型里其作用即修改损失函数，对不同类的样本带来的损失赋权重；
                                 <br>而对于这个参数如何在树模型中起作用，并没有找到官方的具体说明，所以我在这个note里面用一些简单的simulation来探索验证对于其加权方式的猜想，最后结合sklearn这部分的源代码，进一步确定了其加权原理。    
                             </li>
+                            <br>
+                            <li>Focal Loss
+                                关于Focal loss<a href='https://doi.org/10.48550/arXiv.1708.02002'>(paper)</a>也是和上面的不平衡数据任务一起探索的，原理就是使得损失函数中少类样本与难分样本的权重更大。
+                                    
+                                    <br>这里也放一下在<a href='./Stats&ML/focal_loss/12_logisticregression+focal loss.ipynb'>lr</a>、<a href='./Stats&ML/focal_loss/13_mlp+focal loss.ipynb'>mlp</a>、<a href='./Stats&ML/focal_loss/14_xgboost+focal loss.ipynb'>xgboost</a>和<a href='./Stats&ML/focal_loss/15_gbdt+focal loss.ipynb'>gbdt</a>上的代码实现。
+                                    <details>
+                                    <summary>Focal loss原理</summary>
+                                    <img src="./Stats&ML/focal_loss/原理.png" alt="Expandable Image">
+                                  </details>
+                                  <!-- <a href="./Stats&ML/focal_loss/原理.png" target="_blank">see Focal loss原理</a>                                   -->
+                            </li>
+                            <br>
                             <li>在对数据纳入模型前做预处理（如标准化、PCA等）时，需要注意的是，我们要对测试集做和训练集<b>相同的操作</b>，即比如我们对于训练集做了标准化（减均值除标准差），那么对于测试集来说，我们要做的是，减<训练集的>均值除<训练集的>标准差，PCA也一样，我们要在测试集上操作和在训练集上相同的坐标系转换。
                                 <br>这里我们其实隐形做了一些假设，即我们假定未经处理的训练集和测试集是来自同一分布，而我们得到的模型是在‘预处理后的训练集’这个分布上可行的模型，所以我们要先把测试集也变化到同一分布，即对测试集施加同样的预处理步骤。
                                 <br>之前试了一下<a href="./Stats&ML/PCA探索1.html">关于PCA的simulation</a>，当然理解原理了就知道正确的方法的效果当然会较好。
                             </li>
+                            <br>
                             <li>对于非深度的机器学习模型来说，高维输入特征时，PCA降维对于训练速度有显著提升（因为输入特征可以看做是减少了），有时对效果也有改善（因为原始数据有冗余信息）。
                                 <br>（后面会放一个关于PCA的note，最近看论文发现方差矩阵的operator norm可以一定程度上反应X的相关性，结论还蛮有意思的，和PCA也有一定关联）
                             </li>
+                            <br>
                             <li>关于最大似然和最小损失的关系的<a href="./Stats&ML/about_max_likelihood.html">note</a></li>
+                            <br>
                             <li>在深度学习里面，有些情况下，Dropout层和BatchNormalization层对于防止过拟合、提升训练效果有奇效。</li>
                         </ul>
                     </details>
@@ -90,6 +106,12 @@
                         </ul>
                     </details>
 
+
+                    <details>
+                        <summary>Causal Inference</summary>
+                        <p>研一上学期选修了因果推断这门课，<a href="./Causal/index_causal.html">这里面</a>有一些关于这个领域的内容。（建设中）</p>
+                    </details>
+                    
                     <details>
                         <summary>Some notes of papers</summary>
                         <ul>
@@ -102,11 +124,6 @@
                     <details>
                         <summary>Functional Data Analysis</summary>
                         <p>本科时期很荣幸跟着统计与大数据研究院的代文林老师做了有关函数型数据对齐问题的课题，也在这个过程中学习了FDA的基本知识，推荐课程：<a href="https://www.youtube.com/c/FunDataScience">FunDataScience</a>（之后可以把学习笔记放上来）</p>
-                    </details>
-
-                    <details>
-                        <summary>Causal Inference</summary>
-                        <p>研一上学期选修了因果推断这门课，<a href="./Causal/index_causal.html">这里面</a>有一些关于这个领域的内容。（建设中）</p>
                     </details>
 
                 </div>
