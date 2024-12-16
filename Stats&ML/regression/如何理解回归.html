@@ -7,7 +7,7 @@
 
         <meta name="author" content="wuyue" />
     
-        <meta name="date" content="2024-12-08" />
+        <meta name="date" content="2024-12-16" />
     
     <title>如何理解回归</title>
 
@@ -1461,8 +1461,9 @@ src: url(data:application/font-sfnt;base64,AAEAAAARAQAABAAQR0RFRgs+Cz8AAjwQAAAAQ
           <ul>
           <li><a href="#we-can-use-linear-function" id="toc-we-can-use-linear-function">we can use linear
           function</a></li>
-          <li><a href="#what-if-cef-is-indeed-linear" id="toc-what-if-cef-is-indeed-linear">what if CEF is indeed
-          linear?</a></li>
+          <li><a href="#what-if-cef-is-indeed-linearcorrect-model-specification" id="toc-what-if-cef-is-indeed-linearcorrect-model-specification">what
+          if CEF is indeed linear?(Correct model
+          specification?)</a></li>
           <li><a href="#what-do-we-suppose-when-we-suppose-cef-is-linear-if-the-true-cef-is-not-linear" id="toc-what-do-we-suppose-when-we-suppose-cef-is-linear-if-the-true-cef-is-not-linear">What
           do we suppose when we suppose CEF is linear? (if the true CEF
           is not linear)</a></li>
@@ -1470,11 +1471,10 @@ src: url(data:application/font-sfnt;base64,AAEAAAARAQAABAAQR0RFRgs+Cz8AAjwQAAAAQ
           <li><a href="#whats-its-connection-with-linear-regression" id="toc-whats-its-connection-with-linear-regression">What’s
           its connection with linear regression?</a>
           <ul>
-          <li><a href="#assumptions-in-linear-regression-classcorrect-model-specification" id="toc-assumptions-in-linear-regression-classcorrect-model-specification">Assumptions
-          in linear regression class(correct model
-          specification)</a></li>
-          <li><a href="#correct-model-specification" id="toc-correct-model-specification">correct model
-          specification</a></li>
+          <li><a href="#ols-estimation" id="toc-ols-estimation">OLS
+          estimation</a></li>
+          <li><a href="#assumptions-in-linear-regression-classeconomic-view" id="toc-assumptions-in-linear-regression-classeconomic-view">Assumptions
+          in linear regression class(economic view)</a></li>
           <li><a href="#understand-lr-from-a-x-is-designed-view" id="toc-understand-lr-from-a-x-is-designed-view">understand LR
           from a ‘X is designed’ view</a></li>
           </ul></li>
@@ -1492,7 +1492,7 @@ src: url(data:application/font-sfnt;base64,AAEAAAARAQAABAAQR0RFRgs+Cz8AAjwQAAAAQ
         <ul class="authors">
           <li class="divider"></li>
                                 <li><span><i class="glyphicon glyphicon-user"></i> wuyue</span></li>
-                                         <li><span><i class="glyphicon glyphicon-calendar"></i> 2024-12-08</span></li>
+                                         <li><span><i class="glyphicon glyphicon-calendar"></i> 2024-12-16</span></li>
                   </ul>     
       </div>
       <div class="book-body fixed">
@@ -1585,19 +1585,34 @@ Equation)}= 0
 \]</span></p>
 </blockquote>
 </div>
-<div id="what-if-cef-is-indeed-linear" class="section level2">
-<h2>what if CEF is indeed linear?</h2>
+<div id="what-if-cef-is-indeed-linearcorrect-model-specification" class="section level2">
+<h2>what if CEF is indeed linear?(Correct model specification?)</h2>
 <p>If <span class="math inline">\(E[Y\mid \pmb{X}=\pmb{x}]\)</span> is
 indeed a linear function (e.g. when <span class="math inline">\((X,Y)\)</span> is Guassian), then <span class="math inline">\(\pmb{X}^T\pmb{\beta}^*\)</span> is identical with
 <span class="math inline">\(E[Y\mid \pmb{X}]\)</span>, the ‘Best Linear
 Predictor’ is ‘Best Predictor’.</p>
-<p>It also means that, if there exists some <span class="math inline">\(\pmb{\beta}^o\)</span> that satisfies <span class="math inline">\(E(Y \vert \pmb{X}) =
-\pmb{X}^T\pmb{\beta}^o\)</span>/<span class="math inline">\(Y=\pmb{X}^T\pmb{\beta}^o+u,E(u \vert
-\pmb{X})=0\)</span>, then <span class="math inline">\(\pmb{\beta}^o =
-\pmb{\beta}^*\)</span> <a href="#appendix3">(proof)</a></p>
-<p>The orthognality condition E(Xu)=0 &lt;&gt; the best least squares
-optimizor??(understand the Y=X+u equation)</p>
-<p>唯一性？</p>
+<p>Correct model specification:</p>
+<p>if <span class="math inline">\(E(Y \vert \pmb{X}) = \pmb{X}^T
+\beta^{true}\)</span> for some <span class="math inline">\(\beta^{true}
+\in R^{k+1}\)</span></p>
+<blockquote>
+<p>?is this identical with There exist certain <span class="math inline">\(\pmb{\beta}^{true} \in R^{k+1}\)</span>, that
+satisfies <span class="math display">\[Y=\pmb{X}^T\pmb{\beta}+\epsilon\]</span> where
+<span class="math inline">\(E(\epsilon \vert \pmb{X})=0\)</span> (One
+side)By assuming this, we actually assumes that the CEF is linear: <span class="math display">\[E[Y \vert X] = E[(\pmb{X}^T\pmb{\beta}+\epsilon)
+\vert X] = \pmb{X}^T\pmb{\beta}\]</span></p>
+</blockquote>
+<p>Correct model specification implies that:</p>
+<p><span class="math display">\[\pmb{\beta}^{true} =
+\pmb{\beta}^*\]</span> &gt;proof: <span class="math inline">\(Y=\pmb{X}^T\pmb{\beta}^{true}+\epsilon\)</span>
+where <span class="math inline">\(E(\epsilon \vert \pmb{X})=0\)</span>
+then <span class="math inline">\(E[\pmb{X}\epsilon]=E[E[\pmb{X}\epsilon\vert
+\pmb{X}]]=E[\pmb{X}E[\epsilon\vert \pmb{X}]]=0\)</span> then <span class="math inline">\(0=E[\pmb{X}\epsilon] =
+E[\pmb{X}(Y-\pmb{X}^T\pmb{\beta}^{true})]=E[\pmb{X}Y]-E[\pmb{X}\pmb{X}^T]\pmb{\beta}^{true}\)</span>,
+so <span class="math inline">\(\pmb{\beta}^{true} =
+(E[\pmb{X}\pmb{X}^T])^{-1}E[\pmb{X}Y] = \pmb{\beta}^*\)</span> which
+means that if CEF is linear, then <span class="math inline">\(\pmb{\beta}^{true}\)</span> is identical. So we
+can estimate it.</p>
 </div>
 <div id="what-do-we-suppose-when-we-suppose-cef-is-linear-if-the-true-cef-is-not-linear" class="section level2">
 <h2>What do we suppose when we suppose CEF is linear? (if the true CEF
@@ -1609,39 +1624,27 @@ is not linear)</h2>
 </div>
 <div id="whats-its-connection-with-linear-regression" class="section level1">
 <h1>What’s its connection with linear regression?</h1>
-<div id="assumptions-in-linear-regression-classcorrect-model-specification" class="section level2">
-<h2>Assumptions in linear regression class(correct model
-specification)</h2>
-<p>The basic assumption when we do linear regression is that:</p>
-<p>There exist certain <span class="math inline">\(\pmb{\beta}^{true}\)</span>, that</p>
-<p><span class="math display">\[Y_i=\pmb{X}_i^T\pmb{\beta}_i+\epsilon_i,~i=1,...,n\]</span></p>
-<p>(the first time i arises!!!!!how to understand i.i.d with this?)</p>
-<p><span class="math display">\[Y=\pmb{X}^T\pmb{\beta}+\epsilon\]</span></p>
-<p>where <span class="math inline">\(E(\epsilon \vert
-\pmb{X})=0\)</span></p>
-<p>and the covariance of <span class="math inline">\(\epsilon\)</span>
-is 0.</p>
-<p>By assuming this, we actually assumes that the CEF is linear:</p>
-<p><span class="math display">\[E[Y \vert X] =
-E[(\pmb{X}^T\pmb{\beta}+\epsilon) \vert X] =
-\pmb{X}^T\pmb{\beta}\]</span></p>
-<p>And the most commonly seen estimator is OLS, which estimate <span class="math inline">\(\pmb{\beta}\)</span> through minimizing the sample
+<p>Linear regression assumes correct model specification without
+emphasizing it that much.</p>
+<div id="ols-estimation" class="section level2">
+<h2>OLS estimation</h2>
+<p>The most commonly seen estimator is OLS, which estimate <span class="math inline">\(\pmb{\beta}\)</span> through minimizing the sample
 MSE(sample analog? of MSE)</p>
 <p><span class="math display">\[\hat{\pmb{\beta}} = \arg
 \mathop{\min}\limits_{\pmb{b}}
 \frac{1}{n}\sum_{i=1}^n(Y_i-\pmb{X}_i^T\pmb{b})^2\]</span></p>
+<blockquote>
 <p>OLS minimize a thing like MSE, and the estimator is like the global
 best <span class="math inline">\(\beta\)</span>, is this a
 coincidence?</p>
+</blockquote>
 </div>
-<div id="correct-model-specification" class="section level2">
-<h2>correct model specification</h2>
-<p>Need to understand LR from a population view</p>
-<p>In linear regression course, the most commonly (model)assumption is
-:</p>
-<p><span class="math display">\[Y = \beta_0+\beta_1X_1+...+\beta_kX_k
-+\epsilon\]</span> <span class="math display">\[E[\epsilon X] =
-0\]</span></p>
+<div id="assumptions-in-linear-regression-classeconomic-view" class="section level2">
+<h2>Assumptions in linear regression class(economic view)</h2>
+<p>In linear regression course, the most basic (model)assumption when we
+do linear regression is that:</p>
+<p><span class="math display">\[Y_i=\pmb{X}_i^T\pmb{\beta}_i+\epsilon_i,~i=1,...,n\]</span></p>
+<p>(the first time i arises!!!!!how to understand i.i.d with this?)</p>
 </div>
 <div id="understand-lr-from-a-x-is-designed-view" class="section level2">
 <h2>understand LR from a ‘X is designed’ view</h2>
@@ -1727,6 +1730,13 @@ x_k\\
 {\vdots}\\
 \pmb{\beta}_k\\
 \end{pmatrix}\]</span></p>
+<p>It also means that, if there exists some <span class="math inline">\(\pmb{\beta}^o\)</span> that satisfies <span class="math inline">\(E(Y \vert \pmb{X}) =
+\pmb{X}^T\pmb{\beta}^o\)</span>/<span class="math inline">\(Y=\pmb{X}^T\pmb{\beta}^o+u,E(u \vert
+\pmb{X})=0\)</span>, then <span class="math inline">\(\pmb{\beta}^o =
+\pmb{\beta}^*\)</span> <a href="#appendix3">(proof)</a></p>
+<p>The orthognality condition E(Xu)=0 &lt;&gt; the best least squares
+optimizor??(understand the Y=X+u equation)</p>
+<p>唯一性？</p>
 </div>
 
    
